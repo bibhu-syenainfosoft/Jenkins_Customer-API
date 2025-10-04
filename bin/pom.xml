@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bibhu</groupId>
-	<artifactId>Jenkins_Customer-API</artifactId>
+	<artifactId>Customer-API</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 <!--	<packaging>war</packaging>-->
-	<name>Jenkins_Customer-API</name>
-	<description>Jenkins_Customer-API for Ecomm@Bibhu</description>
+	<name>Customer-API</name>
+	<description>Customer-API for Ecomm@Bibhu</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -81,7 +81,7 @@
 	</dependencies>
 
 	<build>
-	<finalName>Jenkins_Customer-API</finalName>
+	<finalName>Customer-API</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

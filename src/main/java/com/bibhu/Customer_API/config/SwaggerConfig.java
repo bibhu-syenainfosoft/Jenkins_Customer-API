@@ -12,7 +12,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("EComm@Bibhu Customer API")
                         .version("1.0")
-                        .description("EComm@Bibhu Customer API Documentation using Swagger"));
+                        .description("EComm@Bibhu Jenkins_Customer API Documentation using Swagger"));
     }
 
 }
