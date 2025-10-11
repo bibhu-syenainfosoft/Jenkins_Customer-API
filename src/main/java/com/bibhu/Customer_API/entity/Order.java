@@ -11,9 +11,11 @@ import java.time.LocalDate;
 @Data
 @Table(name = "orders")
 public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_gen")
+	@SequenceGenerator(name = "order_seq_gen", sequenceName = "order_seq", allocationSize = 1)
+    private Long id;
+    @Column(name = "id",insertable=false, updatable=false)
     private Integer orderId;
 
     @Column(name = "order_tracking_num")

@@ -39,8 +39,13 @@ import java.time.Instant;
 @Entity
 @Data
 public class Products {
-    @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_seq_gen")
+	@SequenceGenerator(
+	    name = "products_seq_gen",
+	    sequenceName = "products_seq",
+	    allocationSize = 1  // Match the DB sequence increment
+	)
     private long productId;
     private String productName;
     private String productDescription;
