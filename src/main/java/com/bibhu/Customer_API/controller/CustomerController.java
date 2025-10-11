@@ -30,7 +30,7 @@ public class CustomerController {
 
     @GetMapping("/check")
     public ResponseEntity<String> check() {
-        return new ResponseEntity<>("Customer-API is Working...", HttpStatus.OK);
+        return new ResponseEntity<>("Customer-API2 is Working...", HttpStatus.OK);
     }
 
     @PostMapping("/login")
