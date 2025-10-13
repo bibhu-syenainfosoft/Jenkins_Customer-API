@@ -1,8 +1,9 @@
-package com.bibhu.Customer_API.repo;
+package com.bibhu.customer.repo;
 
-import com.bibhu.Customer_API.entity.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.bibhu.customer.entity.Products;
 
 //@CrossOrigin("http://localhost:4200/")
 @CrossOrigin(origins = "*")

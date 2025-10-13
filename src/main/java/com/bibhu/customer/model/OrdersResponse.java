@@ -1,4 +1,4 @@
-package com.bibhu.Customer_API.model;
+package com.bibhu.customer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 public class OrdersResponse<T> {
 
-    public List<T> ordersList;
-    public Long recCount;
+     public List<T> ordersList;
+     public Long recCount;
 }

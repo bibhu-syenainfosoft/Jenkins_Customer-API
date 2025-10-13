@@ -1,4 +1,4 @@
-package com.bibhu.Customer_API;
+package com.bibhu.customer;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

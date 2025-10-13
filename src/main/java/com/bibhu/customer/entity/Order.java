@@ -1,4 +1,4 @@
-package com.bibhu.Customer_API.entity;
+package com.bibhu.customer.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -58,6 +58,4 @@ public class Order {
     @Column(name="delivery_date", insertable = false)
     private String deliveryDate;
     
-    //@ElementCollection
-    //private List<OrderItem> orderItems;
 }

@@ -1,11 +1,12 @@
-package com.bibhu.Customer_API.controller;
+package com.bibhu.customer.controller;
 
-import com.bibhu.Customer_API.entity.*;
-import com.bibhu.Customer_API.model.CustomerDTO;
-import com.bibhu.Customer_API.model.OrdersList;
-import com.bibhu.Customer_API.model.OrdersResponse;
-import com.bibhu.Customer_API.service.CustomerService;
-import com.bibhu.Customer_API.service.EmailTemplateService;
+import com.bibhu.customer.entity.*;
+import com.bibhu.customer.model.CustomerDTO;
+import com.bibhu.customer.model.OrdersList;
+import com.bibhu.customer.model.OrdersResponse;
+import com.bibhu.customer.service.CustomerService;
+import com.bibhu.customer.service.EmailTemplateService;
+
 import jakarta.mail.MessagingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,14 +37,14 @@ public class CustomerController {
     @PostMapping("/login")
     public ResponseEntity<Boolean> login(@RequestBody CustomerDTO customer) {
         boolean loginFlag = customerService.existsByEmailAndPassword(customer);
-        return new ResponseEntity<Boolean>(loginFlag, HttpStatus.OK);
+        return new ResponseEntity<>(loginFlag, HttpStatus.OK);
     }
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> register(@RequestBody CustomerDTO customer) throws MessagingException {
         String tempPwd = customerService.generateRandomPwd();
         String html = emailTempService.buildTempPwdHtml(customer.getEmail(), tempPwd);
-        return new ResponseEntity<Map<String, String>>(customerService.register(customer, html, tempPwd), HttpStatus.OK);
+        return new ResponseEntity<>(customerService.register(customer, html, tempPwd), HttpStatus.OK);
     }
 
     @GetMapping("/generatePassword")
@@ -54,9 +55,9 @@ public class CustomerController {
             String html = emailTempService.buildTempPwdHtml(email, tempPwd);
             customerService.sendRandomPwdToMail(email, html);
         }
-        Map<String, Boolean> map = new HashMap();
+        Map<String, Boolean> map = new HashMap<>();
         map.put("SuccessFlag", customerExistingFlag);
-        return new ResponseEntity<Map<String, Boolean>>(map, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @PostMapping("/resetPassword")
@@ -66,10 +67,10 @@ public class CustomerController {
         if (existingTempPwd != null && existingTempPwd.equals(customer.getOldPassword())) {
             successFlag = customerService.generateOrUpdatePassword(customer.getEmail(), customer.getPassword());
         }
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("oldPasswordFlag", successFlag);
         map.put("Status", successFlag ? "Your password has been reset successfully" : "Old Password does not match with System generated Password");
-        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @GetMapping("/getOrdersByCustomer")
@@ -78,11 +79,11 @@ public class CustomerController {
     	OrdersResponse<OrdersList> listOfOrders = customerService.getAllOrdersByCustomer(email,lowerBound,upperBound);
         String custName = customerService.getCustomerNameByEmail(email);
 
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("ordersList", listOfOrders.ordersList);
         map.put("count", listOfOrders.recCount);
         map.put("customerName", custName);
-        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @GetMapping("/getOrderDetails")
@@ -93,18 +94,18 @@ public class CustomerController {
         Address address = customerService.getAddressDetails(order.getAddress().getId());
         Customer customer = customerService.getCustomerDetais(order.getCustomer().getId());
 
-        Map<String, Object> map = new HashMap();
+        Map<String, Object> map = new HashMap<>();
         map.put("orderItems", orderItemsList);
         map.put("deliveryDate", order.getDeliveryDate());
         map.put("addressDetails", address);
         map.put("customerDetails", customer);
-        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @GetMapping("/getProductId")
     public ResponseEntity<Long> getProductId(@RequestParam String url) {
         Products products = customerService.getProductId(url);
-        return new ResponseEntity<Long>(products.getProductId(), HttpStatus.OK);
+        return new ResponseEntity<>(products.getProductId(), HttpStatus.OK);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.bibhu.Customer_API.service;
+package com.bibhu.customer.service;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -8,52 +8,47 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.hibernate.query.Page;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.bibhu.Customer_API.entity.Address;
-import com.bibhu.Customer_API.entity.Customer;
-import com.bibhu.Customer_API.entity.Order;
-import com.bibhu.Customer_API.entity.OrderItem;
-import com.bibhu.Customer_API.entity.Products;
-import com.bibhu.Customer_API.model.CustomerDTO;
-import com.bibhu.Customer_API.model.OrdersList;
-import com.bibhu.Customer_API.model.OrdersResponse;
-import com.bibhu.Customer_API.repo.AddressRepository;
-import com.bibhu.Customer_API.repo.CustomerRepository;
-import com.bibhu.Customer_API.repo.OrderItemRepository;
-import com.bibhu.Customer_API.repo.OrderRepository;
-import com.bibhu.Customer_API.repo.ProductRepo;
+import com.bibhu.customer.entity.Address;
+import com.bibhu.customer.entity.Customer;
+import com.bibhu.customer.entity.Order;
+import com.bibhu.customer.entity.OrderItem;
+import com.bibhu.customer.entity.Products;
+import com.bibhu.customer.model.CustomerDTO;
+import com.bibhu.customer.model.OrdersList;
+import com.bibhu.customer.model.OrdersResponse;
+import com.bibhu.customer.repo.AddressRepository;
+import com.bibhu.customer.repo.CustomerRepository;
+import com.bibhu.customer.repo.OrderItemRepository;
+import com.bibhu.customer.repo.OrderRepository;
+import com.bibhu.customer.repo.ProductRepo;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
-	@Autowired
-	private CustomerRepository customerRepo;
+	
+	private final CustomerRepository customerRepo; // Field injection
+	
+	private final OrderRepository orderRepo;
 
-	@Autowired
-	private OrderRepository orderRepo;
+	private final OrderItemRepository orderItemRepo;
 
-	@Autowired
-	private OrderItemRepository orderItemRepo;
+	private final AddressRepository addressRepo;
+	
+	private final ProductRepo prodRepo;
 
-	@Autowired
-	private AddressRepository addressRepo;
-
-	@Autowired
-	private ProductRepo prodRepo;
-
-	public boolean ableToSendTempPwdFlag = false;
-
-	@Autowired
-	private JavaMailSender mailSender;
+	public static boolean ableToSendTempPwdFlag = false;
+	
+	private final JavaMailSender mailSender;
 
 	@Override
 	public boolean existsByEmailAndPassword(CustomerDTO customer) {

@@ -1,8 +1,9 @@
-package com.bibhu.Customer_API.repo;
+package com.bibhu.customer.repo;
 
-import com.bibhu.Customer_API.entity.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.bibhu.customer.entity.OrderItem;
 
 import java.util.List;
 

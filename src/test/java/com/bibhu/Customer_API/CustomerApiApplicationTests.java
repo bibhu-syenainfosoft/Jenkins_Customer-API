@@ -8,6 +8,7 @@ class CustomerApiApplicationTests {
 
 	@Test
 	void contextLoads() {
+		throw new UnsupportedOperationException();
 	}
 
 }

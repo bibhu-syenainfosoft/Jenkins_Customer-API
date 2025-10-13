@@ -1,4 +1,4 @@
-package com.bibhu.Customer_API.model;
+package com.bibhu.customer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

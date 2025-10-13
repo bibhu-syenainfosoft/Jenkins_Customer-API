@@ -1,4 +1,4 @@
-package com.bibhu.Customer_API.entity;
+package com.bibhu.customer.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.bibhu.Customer_API.service;
+package com.bibhu.customer.service;
 
 public interface EmailTemplateService {
 

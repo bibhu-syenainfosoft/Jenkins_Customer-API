@@ -1,9 +1,9 @@
-package com.bibhu.Customer_API.service;
+package com.bibhu.customer.service;
 
-import com.bibhu.Customer_API.entity.*;
-import com.bibhu.Customer_API.model.CustomerDTO;
-import com.bibhu.Customer_API.model.OrdersList;
-import com.bibhu.Customer_API.model.OrdersResponse;
+import com.bibhu.customer.entity.*;
+import com.bibhu.customer.model.CustomerDTO;
+import com.bibhu.customer.model.OrdersList;
+import com.bibhu.customer.model.OrdersResponse;
 
 import jakarta.mail.MessagingException;
 
